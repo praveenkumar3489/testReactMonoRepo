@@ -6,7 +6,8 @@ node {
 	env.AUTOBUILD="false"
 
 	if ("${env.AUTOBUILD}" == "true"){
+		echo "inside if"
 	}else{
-		System.out.println("test console")
+		echo "test console"
 	}
 }
