@@ -26,14 +26,23 @@ node {
 		}
 		print sourceChanged.length
 		echo "abcd1234"
-
-		stage('Build AppOne') {
-            dir('./appone'){
-                sh "npm install"
-                sh "npm run build"
-                stash includes: 'build/**', name: 'buildfiles'
-                echo "build successful"
-            } 
-        }	
+	
 	}
+	stage('Git Checkout') {
+        steps {
+            script {
+                git branch: 'main',
+                    credentialsId: 'TestMonoRepoName',
+                    url: 'https://github.com/praveenkumar3489/testReactMonoRepo.git'
+            }
+        }
+    }
+    stage('Build AppOne') {
+        dir('./appone'){
+            sh "npm install"
+            sh "npm run build"
+            stash includes: 'build/**', name: 'buildfiles'
+            echo "build successful"
+        } 
+    }
 }
