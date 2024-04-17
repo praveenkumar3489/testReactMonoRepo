@@ -49,7 +49,7 @@ node {
         		sh "npm install"
 	            sh "npm run build"
 	            stash includes: 'build/**', name: 'buildfiles'
-	            echo "build successful"?
+	            echo "build successful"
         	}
         } 
     }
