@@ -7,7 +7,6 @@ node {
 	env.WORKSPACE="dev"
 	List<String> sourceChanged=new ArrayList<String>()
 	echo "test console"
-	tool {nodejs "nodejs"}
 	stage('call for build') {
 		def changeLogSets = currentBuild.rawBuild.changeSets
 		echo "  changeLogSets: ${changeLogSets}"				
@@ -46,10 +45,12 @@ node {
     }
     stage('Build AppOne') {
         dir('./appone'){
-            sh "npm install"
-            sh "npm run build"
-            stash includes: 'build/**', name: 'buildfiles'
-            echo "build successful"
+        	nodejs('nodejs'){
+        		npm install
+	            npm run build
+	            stash includes: 'build/**', name: 'buildfiles'
+	            echo "build successful"
+        	}
         } 
     }
 }
