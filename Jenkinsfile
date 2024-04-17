@@ -24,6 +24,6 @@ node {
 			}
 		}
 		print sourceChanged.length
-		echo "abcd"
+		echo "abcd1"
 	}
 }
