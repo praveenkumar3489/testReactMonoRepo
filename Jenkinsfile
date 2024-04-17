@@ -53,4 +53,26 @@ node {
         	}
         } 
     }
+
+    stage('Build AppTwo') {
+        dir('./apptwo'){
+        	nodejs('nodejs'){
+        		sh "npm install"
+	            sh "npm run build"
+	            stash includes: 'build/**', name: 'buildfiles'
+	            echo "build successful"
+        	}
+        } 
+    }
+
+    stage('Build AppThree') {
+        dir('./appthree'){
+        	nodejs('nodejs'){
+        		sh "npm install"
+	            sh "npm run build"
+	            stash includes: 'build/**', name: 'buildfiles'
+	            echo "build successful"
+        	}
+        } 
+    }
 }
