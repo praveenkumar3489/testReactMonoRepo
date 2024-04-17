@@ -29,7 +29,6 @@ node {
 
 		stage('Build AppOne') {
             dir('./appone'){
-                sh "chmod +x -R ${env.WORKSPACE}"
                 sh "npm install"
                 sh "npm run build"
                 stash includes: 'build/**', name: 'buildfiles'
