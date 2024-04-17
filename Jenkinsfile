@@ -46,10 +46,10 @@ node {
     stage('Build AppOne') {
         dir('./appone'){
         	nodejs('nodejs'){
-        		npm install
-	            npm run build
+        		sh "npm install"
+	            sh "npm run build"
 	            stash includes: 'build/**', name: 'buildfiles'
-	            echo "build successful"
+	            echo "build successful"?
         	}
         } 
     }
