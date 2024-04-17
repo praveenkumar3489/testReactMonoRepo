@@ -7,15 +7,8 @@ node {
 	env.WORKSPACE="dev"
 	List<String> sourceChanged=new ArrayList<String>()
 	echo "test console"
-	agent {
-        docker {
-            image 'node:6-alpine'
-            args '-p 3000:3000'
-        }
-    }
-    environment {
-        CI = 'true' 
-    }
+	tools {nodejs "nodejs"}
+	echo "nodejs installed"
 	stage('call for build') {
 		def changeLogSets = currentBuild.rawBuild.changeSets
 		echo "  changeLogSets: ${changeLogSets}"				
