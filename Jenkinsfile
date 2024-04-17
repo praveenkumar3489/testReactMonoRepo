@@ -31,7 +31,7 @@ node {
 	stage('Git Checkout') {
 
 		git(
-	       url: 'git@github.com/praveenkumar3489/testReactMonoRepo.git',
+	       url: 'https://github.com/praveenkumar3489/testReactMonoRepo.git',
 	       credentialsId: '756c599f-4414-447b-a627-fd9c811765a8',
 	       branch: "main"
 	    )
