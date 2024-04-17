@@ -7,6 +7,16 @@ node {
 	env.WORKSPACE="dev"
 	List<String> sourceChanged=new ArrayList<String>()
 	echo "test console"
+	agent any
+	agent {
+        docker {
+            image 'node:6-alpine'
+            args '-p 3000:3000'
+        }
+    }
+    environment {
+        CI = 'true' 
+    }
 	stage('call for build') {
 		def changeLogSets = currentBuild.rawBuild.changeSets
 		echo "  changeLogSets: ${changeLogSets}"				
@@ -29,12 +39,6 @@ node {
 	
 	}
 	stage('Git Checkout') {
-		agent {
-            docker {
-                image 'node:lts-alpine'
-                args '-u root:root'
-            }
-        }
 		git(
 	       url: 'https://github.com/praveenkumar3489/testReactMonoRepo.git',
 	       credentialsId: '756c599f-4414-447b-a627-fd9c811765a8',
