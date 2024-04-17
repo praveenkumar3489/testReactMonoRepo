@@ -7,7 +7,6 @@ node {
 	env.WORKSPACE="dev"
 	List<String> sourceChanged=new ArrayList<String>()
 	echo "test console"
-	agent any
 	agent {
         docker {
             image 'node:6-alpine'
