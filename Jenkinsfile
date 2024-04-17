@@ -4,6 +4,7 @@ import java.time.*
 node {	
 	env.Release_Prefix="Test-Mono-react-repo"	
 	env.AUTOBUILD="false"
+	env.WORKSPACE="dev"
 	List<String> sourceChanged=new ArrayList<String>()
 	echo "test console"
 	stage('call for build') {
@@ -25,5 +26,15 @@ node {
 		}
 		print sourceChanged.length
 		echo "abcd1234"
+
+		stage('Build AppOne') {
+            dir('./appone'){
+                sh "chmod +x -R ${env.WORKSPACE}"
+                sh "npm install"
+                sh "npm run build"
+                stash includes: 'build/**', name: 'buildfiles'
+                echo "build successful"
+            } 
+        }	
 	}
 }
