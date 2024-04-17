@@ -7,8 +7,7 @@ node {
 	env.WORKSPACE="dev"
 	List<String> sourceChanged=new ArrayList<String>()
 	echo "test console"
-	tools {nodejs "nodejs"}
-	echo "nodejs installed"
+	tool {nodejs "nodejs"}
 	stage('call for build') {
 		def changeLogSets = currentBuild.rawBuild.changeSets
 		echo "  changeLogSets: ${changeLogSets}"				
