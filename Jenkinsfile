@@ -29,7 +29,7 @@ node {
 	
 	}
 	stage('Git Checkout') {
-        steps {
+        step {
             script {
                 git branch: 'main',
                     credentialsId: 'TestMonoRepoName',
