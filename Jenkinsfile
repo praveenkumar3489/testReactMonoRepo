@@ -34,14 +34,7 @@ node {
 	       credentialsId: '756c599f-4414-447b-a627-fd9c811765a8',
 	       branch: "main"
 	    )
-        // step {
-            // script {
-            //     git branch: 'main',
-            //         credentialsId: '756c599f-4414-447b-a627-fd9c811765a8',
-            //         url: 'git@github.com/praveenkumar3489/testReactMonoRepo.git'
-            // }
-            echo "git checkout complete"
-        // }
+        echo "git checkout complete"
     }
     stage('Build AppOne') {
         dir('./appone'){
